@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    width: 800px;
+    height: 800px;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.pixel {
+    flex: 1;
+    will-change: background-color;
+    /*border: 1px solid red;*/
+
+}
