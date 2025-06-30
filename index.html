@@ -14,16 +14,20 @@
 <section class="main-content">
     <div class="color-picker">
         <div>
-            <label for="favcolor">Select your favorite color:</label>
-            <input type="color" id="favcolor" value="#ff0000">
+            <label for="color-picker">Select your favorite color:</label>
+            <input type="color" id="color-picker" value="#ff0000">
+        </div>
+        <div>
+            <label for="rainbowBtn">Or let the rainbow guide you</label>
+            <button id="rainbowBtn"></button>
         </div>
     </div>
-    <div class="container">
+    <div class="pixel-container">
     </div>
     <div class="canvas-size-picker">
-        <div id="canvas-size-container">
-            <label for="canvas-size">Size(Max 100):</label>
-            <input type="number" id="canvas-size" min="1" max="100" value="16">
+        <div id="canvas-size-input-button-container">
+            <label for="canvas-size-input">Size(Max 100):</label>
+            <input type="number" id="canvas-size-input" min="1" max="100" value="16">
         </div>
         <button id="sizeBtn">Create new canvas</button>
 

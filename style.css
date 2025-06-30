@@ -37,49 +37,76 @@ body {
 }
 
 .color-picker, .canvas-size-picker {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 350px;
+    margin-top: 70px;
+    width: 250px;
     font-size: 36px;
     color: #798777;
+
 }
 
-#favcolor {
+#color-picker {
+    display: flex;
+    flex-direction: column;
     width: 200px;
     height: 80px;
     background: #BDD2B6;
-    border: #BDD2B6 solid 12px;
-    border-radius: 10px;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: 30px;
 }
 
-#canvas-size-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-
-}
-
-
-#canvas-size {
+#canvas-size-input {
     height: 25px;
     width: 65px;
     font-size: 30px;
     background: #F8EDE3;
 }
+
+#rainbowBtn {
+    width: 200px;
+    height: 80px;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-size: 24px;
+    background: linear-gradient(
+            to right,
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            indigo, /* or #4B0082 */
+            violet /* or #EE82EE */
+    );
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    gap: 8px; /* Space between star and any text in the button */
+}
+
+#rainbowBtn.has-star::before {
+    content: "⭐"; /* The actual Unicode character */
+    font-size: 2.7em;
+}
+
 #sizeBtn {
     font-family: "Beanco", serif;
     font-size: 36px;
-
+    margin-top: 10px;
     background: #A2B29F;
     color: #798777;
     border: #798777 solid 3px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
+    height: 60px;
+
 }
-.container {
+.pixel-container {
     display: flex;
     height: 800px;
     width: 800px;
@@ -90,7 +117,7 @@ body {
     background: white;
 }
 
-.row {
+.pixel-row {
     display: flex;
     flex: 1;
 }
@@ -99,5 +126,8 @@ body {
     flex: 1;
     will-change: background-color;
     /*border: 1px solid red;*/
+}
+
+.button-selected {
 
 }

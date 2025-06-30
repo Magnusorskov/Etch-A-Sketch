@@ -1,13 +1,16 @@
 let isDrawing = false;
-const colorPicker = document.querySelector("#favcolor");
+let isRainbowTime = false;
+let lastColoredPixel = null;
+
+const colorPicker = document.querySelector("#color-picker");
 let color = colorPicker.value;
-const container = document.querySelector(".container");
+const container = document.querySelector(".pixel-container");
 
 
 function createPixels(pixelCount) {
     for (let i = 0; i < pixelCount; i++) {
         const row = document.createElement("div");
-        row.classList.add("row");
+        row.classList.add("pixel-row");
         for (let j = 0; j < pixelCount; j++) {
             const pixel = document.createElement("div");
             pixel.classList.add("pixel");
@@ -22,21 +25,25 @@ container.addEventListener("mousedown", (e) => {
     if (e.button === 0) {
         isDrawing = true;
     }
+    if (e.target.classList.contains("pixel")) {
+        colorPixel(e.target);
+    }
 })
 container.addEventListener("mousemove", (e) => {
     if (isDrawing) {
         if (e.target.classList.contains("pixel")) {
-            e.target.style.background = color;
+            colorPixel(e.target);
         }
     }
 })
 container.addEventListener("mouseup", (e) => {
     isDrawing = false;
+    lastColoredPixel = null;
 })
 
 const button = document.querySelector("#sizeBtn");
 button.addEventListener("click", (e) => {
-    const amountOfPixelsInput = document.querySelector("#canvas-size");
+    const amountOfPixelsInput = document.querySelector("#canvas-size-input");
     const amountOfPixels = parseInt(amountOfPixelsInput.value);
     if (amountOfPixels > 100 || amountOfPixels < 0) {
         alert("Size should be between 1 and 100");
@@ -54,5 +61,28 @@ colorPicker.addEventListener("change", (e) => {
     color = colorPicker.value;
 })
 
+function colorPixel(pixel) {
+    if (pixel !== lastColoredPixel) {
+        if (isRainbowTime) {
+            const randomRBGValue = () => {
+                return Math.floor(Math.random() * 256);
+            }
+            const redValue = randomRBGValue()
+            const greenValue = randomRBGValue();
+            const blueValue = randomRBGValue();
+
+            pixel.style.background = `rgb(${redValue}, ${greenValue}, ${blueValue}`;
+        } else {
+            pixel.style.background = color
+        }
+        lastColoredPixel = pixel;
+    }
+}
+
+const rainbowBtn = document.querySelector("#rainbowBtn");
+rainbowBtn.addEventListener("click", (e) => {
+    rainbowBtn.classList.toggle('has-star');
+    isRainbowTime = rainbowBtn.classList.contains("has-star");
+})
 createPixels(16);
 
