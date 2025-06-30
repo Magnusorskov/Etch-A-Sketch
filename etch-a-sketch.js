@@ -1,4 +1,5 @@
 let isDrawing = false;
+let isErasingTime = false;
 let isRainbowTime = false;
 let lastColoredPixel = null;
 
@@ -36,13 +37,13 @@ container.addEventListener("mousemove", (e) => {
         }
     }
 })
-container.addEventListener("mouseup", (e) => {
+container.addEventListener("mouseup", () => {
     isDrawing = false;
     lastColoredPixel = null;
 })
 
 const button = document.querySelector("#sizeBtn");
-button.addEventListener("click", (e) => {
+button.addEventListener("click", () => {
     const amountOfPixelsInput = document.querySelector("#canvas-size-input");
     const amountOfPixels = parseInt(amountOfPixelsInput.value);
     if (amountOfPixels > 100 || amountOfPixels < 0) {
@@ -57,13 +58,15 @@ function reset() {
     container.innerHTML = "";
 }
 
-colorPicker.addEventListener("change", (e) => {
+colorPicker.addEventListener("change", () => {
     color = colorPicker.value;
 })
 
 function colorPixel(pixel) {
     if (pixel !== lastColoredPixel) {
-        if (isRainbowTime) {
+        if (isErasingTime) {
+            pixel.style.background = "rgb(255, 255, 255)"
+        } else if (isRainbowTime) {
             const randomRBGValue = () => {
                 return Math.floor(Math.random() * 256);
             }
@@ -80,14 +83,21 @@ function colorPixel(pixel) {
 }
 
 const rainbowBtn = document.querySelector("#rainbowBtn");
-rainbowBtn.addEventListener("click", (e) => {
+rainbowBtn.addEventListener("click", () => {
     rainbowBtn.classList.toggle('has-star');
     isRainbowTime = rainbowBtn.classList.contains("has-star");
 })
 
 const eraserBtn = document.querySelector("#eraserBtn");
-eraserBtn.addEventListener("click", (e) => {
-    color = "rgb(255, 255, 255)"
+eraserBtn.addEventListener("click", () => {
+    if (!isErasingTime) {
+        isErasingTime = true;
+        eraserBtn.style.opacity = "1";
+    } else {
+        eraserBtn.style.opacity = "0.5";
+        isErasingTime = false;
+
+    }
 })
 createPixels(16);
 

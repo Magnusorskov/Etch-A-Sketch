@@ -1,9 +1,8 @@
 @font-face {
-    font-family: 'Beanco'; /* 1. Choose a name for your font (can be anything you want) */
+    font-family: 'Beanco';
     src: url('fonts/Beanco-Font.otf') format('opentype');
-    font-weight: normal; /* Define the weight (e.g., normal, bold, 400, 700) */
-    font-style: normal;  /* Define the style (e.g., normal, italic) */
-    font-display: swap;  /* 4. Highly recommended for performance (see explanation below) */
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
@@ -79,16 +78,16 @@ body {
             yellow,
             green,
             blue,
-            indigo, /* or #4B0082 */ violet /* or #EE82EE */
+            indigo, violet
     );
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    gap: 8px; /* Space between star and any text in the button */
+    justify-content: center;
+    align-items: center;
+
 }
 
 #rainbowBtn.has-star::before {
-    content: "⭐"; /* The actual Unicode character */
+    content: "⭐";
     font-size: 2.7em;
 }
 
@@ -102,6 +101,7 @@ body {
     border: none;
     background: none;
     cursor: pointer;
+    opacity: 0.5;
 }
 
 #eraserBtn img {
