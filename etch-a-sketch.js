@@ -84,5 +84,10 @@ rainbowBtn.addEventListener("click", (e) => {
     rainbowBtn.classList.toggle('has-star');
     isRainbowTime = rainbowBtn.classList.contains("has-star");
 })
+
+const eraserBtn = document.querySelector("#eraserBtn");
+eraserBtn.addEventListener("click", (e) => {
+    color = "rgb(255, 255, 255)"
+})
 createPixels(16);
 

@@ -79,18 +79,34 @@ body {
             yellow,
             green,
             blue,
-            indigo, /* or #4B0082 */
-            violet /* or #EE82EE */
+            indigo, /* or #4B0082 */ violet /* or #EE82EE */
     );
     display: flex;
     justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
+    align-items: center; /* Center vertically */
     gap: 8px; /* Space between star and any text in the button */
 }
 
 #rainbowBtn.has-star::before {
     content: "⭐"; /* The actual Unicode character */
     font-size: 2.7em;
+}
+
+#eraserBtn {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#eraserBtn img {
+    width: 200px;
+    height: 150px;
 }
 
 #sizeBtn {
@@ -106,6 +122,7 @@ body {
     height: 60px;
 
 }
+
 .pixel-container {
     display: flex;
     height: 800px;
