@@ -1,10 +1,95 @@
+@font-face {
+    font-family: 'Beanco'; /* 1. Choose a name for your font (can be anything you want) */
+    src: url('fonts/Beanco-Font.otf') format('opentype');
+    font-weight: normal; /* Define the weight (e.g., normal, bold, 400, 700) */
+    font-style: normal;  /* Define the style (e.g., normal, italic) */
+    font-display: swap;  /* 4. Highly recommended for performance (see explanation below) */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+
+    background: #BDD2B6;
+    font-family: 'Beanco', serif;
+    font-size: 28px;
+}
+
+.header, .footer {
+    display: flex;
+    box-sizing: border-box;
+    background: #F8EDE3;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    color: #798777;
+}
+
+.footer {
+    flex: 1;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.color-picker, .canvas-size-picker {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    font-size: 36px;
+    color: #798777;
+}
+
+#favcolor {
+    width: 200px;
+    height: 80px;
+    background: #BDD2B6;
+    border: #BDD2B6 solid 12px;
+    border-radius: 10px;
+}
+
+#canvas-size-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+#canvas-size {
+    height: 25px;
+    width: 65px;
+    font-size: 30px;
+    background: #F8EDE3;
+}
+#sizeBtn {
+    font-family: "Beanco", serif;
+    font-size: 36px;
+
+    background: #A2B29F;
+    color: #798777;
+    border: #798777 solid 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
 .container {
     display: flex;
-    width: 800px;
     height: 800px;
+    width: 800px;
     flex-direction: column;
-    border: 1px solid black;
+    align-self: center;
+    border: 4px solid #798777;
+    border-radius: 10px;
+    background: white;
 }
+
 .row {
     display: flex;
     flex: 1;

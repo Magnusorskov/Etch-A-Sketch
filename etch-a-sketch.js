@@ -1,46 +1,58 @@
 let isDrawing = false;
+const colorPicker = document.querySelector("#favcolor");
+let color = colorPicker.value;
+const container = document.querySelector(".container");
+
 
 function createPixels(pixelCount) {
-    const container = document.querySelector(".container");
-    container.addEventListener("mousedown", (e) => {
-        e.preventDefault();
-        if (e.button === 0) {
-            isDrawing = true;
-        }
-    })
-    container.addEventListener("mousemove", (e) => {
-        if (isDrawing) {
-            if (e.target.classList.contains("pixel")) {
-                e.target.style.background = "black";
-            }
-        }
-    })
-    container.addEventListener("mouseup", (e) => {
-        isDrawing = false;
-    })
-
-
     for (let i = 0; i < pixelCount; i++) {
         const row = document.createElement("div");
         row.classList.add("row");
         for (let j = 0; j < pixelCount; j++) {
             const pixel = document.createElement("div");
             pixel.classList.add("pixel");
-            // pixel.addEventListener("mouseenter", (e) => {
-            //     if (isDrawing) {
-            //         pixel.style.background = "black";
-            //     }
-            // })
-            // pixel.addEventListener("mousedown", (e) => {
-            //     if (e.button === 0) {
-            //         pixel.style.background = "black";
-            //     }
-            // })
             row.appendChild(pixel);
         }
         container.appendChild(row);
     }
 }
 
-createPixels(50);
+container.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    if (e.button === 0) {
+        isDrawing = true;
+    }
+})
+container.addEventListener("mousemove", (e) => {
+    if (isDrawing) {
+        if (e.target.classList.contains("pixel")) {
+            e.target.style.background = color;
+        }
+    }
+})
+container.addEventListener("mouseup", (e) => {
+    isDrawing = false;
+})
+
+const button = document.querySelector("#sizeBtn");
+button.addEventListener("click", (e) => {
+    const amountOfPixelsInput = document.querySelector("#canvas-size");
+    const amountOfPixels = parseInt(amountOfPixelsInput.value);
+    if (amountOfPixels > 100 || amountOfPixels < 0) {
+        alert("Size should be between 1 and 100");
+    } else {
+        reset();
+        createPixels(amountOfPixels)
+    }
+})
+
+function reset() {
+    container.innerHTML = "";
+}
+
+colorPicker.addEventListener("change", (e) => {
+    color = colorPicker.value;
+})
+
+createPixels(16);
 
